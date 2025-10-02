@@ -1,0 +1,44 @@
+# Markdownlint configuration for documentation linting
+# See: https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
+
+config:
+  # Line length - disabled as it's often too restrictive for technical docs
+  MD013: false
+  
+  # Inline HTML - allow as it's useful for complex formatting
+  MD033: false
+  
+  # First line in file should be a top level header - disabled for flexibility
+  MD041: false
+  
+  # Multiple top level headers in the same document - allow for long documents
+  MD025: false
+  
+  # Trailing punctuation in header - allow flexibility
+  MD026: false
+  
+  # Multiple consecutive blank lines - limit to 2
+  MD012:
+    maximum: 2
+  
+  # Hard tabs - convert to spaces
+  MD010:
+    code_blocks: false
+  
+  # Reversed link syntax - catch common mistakes
+  MD011: true  
+
+# Files to lint
+globs:
+  - "**/*.md"
+
+# Files/directories to ignore
+ignores:
+  - "node_modules/**"
+  - ".git/**"
+  - "vendor/**"
+  - "**/vendor/**"
+  
+# Output format
+outputFormatters:
+  - - markdownlint-cli2-formatter-default
