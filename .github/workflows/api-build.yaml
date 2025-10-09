@@ -1,0 +1,55 @@
+name: CI Pipeline
+on:
+    push:
+        branches:
+          - main
+   
+    pull_request:
+      branches: 
+        - main
+    
+    workflow_dispatch:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        env:
+          PROJECT_DIR: apps/api
+        steps:
+
+            - name: Checkout code
+              id: checkout-code
+              uses: actions/checkout@v4
+            
+            - name: Setup Python
+              id: setup-python
+              uses: actions/setup-python@v5
+              with:
+                python-version: '3.12'
+
+            - name: Setup Poetry
+              id: setup-poetry
+              uses: abatilo/actions-poetry@v4
+            
+            - name: Install Dependencies
+              id: install-dependencies
+              working-directory: ${{ env.PROJECT_DIR }}
+              run: poetry install
+            
+            - name: Lint Python Code
+              id: lint-code
+              working-directory: ${{ env.PROJECT_DIR }}
+              run: poetry run ruff check src tests
+
+            - name: Run Type Checks
+              id: run-type-checks
+              working-directory: ${{ env.PROJECT_DIR }}
+              run: poetry run mypy ./src --strict
+            
+            - name: Run Tests with coverage
+              id: run-tests
+              working-directory: ${{ env.PROJECT_DIR }}
+              run: |
+                    poetry run coverage run -m pytest
+                    poetry run coverage xml
+                    poetry run coverage report -m
