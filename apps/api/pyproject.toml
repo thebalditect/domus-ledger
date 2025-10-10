@@ -10,8 +10,6 @@ readme = "README.md"
 packages=[{include="domus_ledger_api", from="src"}]
 requires-python = ">=3.12"
 dependencies = [
-    "sqlalchemy (>=2.0.43,<3.0.0)",
-    "alembic (>=1.16.5,<2.0.0)"
 ]
 
 
