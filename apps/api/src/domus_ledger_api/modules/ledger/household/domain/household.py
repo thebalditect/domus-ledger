@@ -1,8 +1,10 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Callable, List
-from api.src.domus_ledger_api.modules.ledger.household.errors import HouseholdErrors
-from api.src.domus_ledger_api.modules.ledger.household.member import Member
+from api.src.domus_ledger_api.modules.ledger.household.domain.errors import (
+    HouseholdErrors,
+)
+from api.src.domus_ledger_api.modules.ledger.household.domain.member import Member
 from api.src.domus_ledger_api.shared_kernel.domain.base_entity import BaseEntity
 from api.src.domus_ledger_api.shared_kernel.domain.error import Error
 from api.src.domus_ledger_api.shared_kernel.domain.result import Result

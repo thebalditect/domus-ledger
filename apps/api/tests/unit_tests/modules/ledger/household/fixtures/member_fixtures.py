@@ -3,8 +3,10 @@ from datetime import datetime
 from typing import List
 import pytest
 
-from api.src.domus_ledger_api.modules.ledger.household.member import Member
-from api.src.domus_ledger_api.modules.ledger.household.member_role import MemberRole
+from api.src.domus_ledger_api.modules.ledger.household.domain.member import Member
+from api.src.domus_ledger_api.modules.ledger.household.domain.member_role import (
+    MemberRole,
+)
 
 
 @dataclass

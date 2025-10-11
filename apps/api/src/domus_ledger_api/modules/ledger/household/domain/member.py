@@ -3,8 +3,12 @@ import re
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Callable, List
-from api.src.domus_ledger_api.modules.ledger.household.errors import HouseholdErrors
-from api.src.domus_ledger_api.modules.ledger.household.member_role import MemberRole
+from api.src.domus_ledger_api.modules.ledger.household.domain.errors import (
+    HouseholdErrors,
+)
+from api.src.domus_ledger_api.modules.ledger.household.domain.member_role import (
+    MemberRole,
+)
 from api.src.domus_ledger_api.shared_kernel.domain.base_entity import BaseEntity
 from api.src.domus_ledger_api.shared_kernel.domain.result import Result
 from api.src.domus_ledger_api.shared_kernel.domain.error import Error
