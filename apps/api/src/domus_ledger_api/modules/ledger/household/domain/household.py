@@ -14,7 +14,7 @@ from api.src.domus_ledger_api.shared_kernel.domain.result import Result
 class Household(BaseEntity):
     name: str
     description: str
-    members: List[Member] = field(default_factory=list)
+    members: List[Member] = field(default_factory=list[Member])
 
     def __init__(self, name: str, description: str):
 
@@ -36,10 +36,10 @@ class Household(BaseEntity):
             errors.extend(validate())
 
         if len(errors) > 0:
-            return Result.failure(errors)
+            return Result[Household].failure(errors)
 
         household = Household(name, description)
-        return Result.success(household)
+        return Result[Household].success(household)
 
     @staticmethod
     def _validate_name(name: str) -> List[Error]:
@@ -63,12 +63,12 @@ class Household(BaseEntity):
             existing_member.email.lower() == member.email.lower()
             for existing_member in self.members
         ):
-            return Result.failure(
+            return Result[None].failure(
                 [HouseholdErrors.member_already_added_to_household(member.email)]
             )
 
         self.members.append(member)
-        return Result.success(None)
+        return Result[None].success(None)
 
     def remove_member(self, member: Member) -> Result[None]:
         # Find the index of the member if it exists
@@ -82,7 +82,7 @@ class Household(BaseEntity):
         )
 
         if index is None:
-            return Result.failure(
+            return Result[None].failure(
                 [
                     HouseholdErrors.member_does_not_exist_in_household(
                         member.email.lower()
@@ -91,4 +91,4 @@ class Household(BaseEntity):
             )
 
         del self.members[index]
-        return Result.success(None)
+        return Result[None].success(None)

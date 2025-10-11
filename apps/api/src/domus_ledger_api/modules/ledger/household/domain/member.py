@@ -70,7 +70,7 @@ class Member(BaseEntity):
             errors.extend(validate())
 
         if len(errors) > 0:
-            return Result.failure(errors=errors)
+            return Result[Member].failure(errors=errors)
 
         member = Member(
             name=name,
@@ -80,7 +80,7 @@ class Member(BaseEntity):
             avatar=avatar,
             role=role,
         )
-        return Result.success(member)
+        return Result[Member].success(member)
 
     @staticmethod
     def _validate_name(name: str) -> List[Error]:
