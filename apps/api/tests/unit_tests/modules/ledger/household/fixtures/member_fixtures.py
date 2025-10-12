@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
 from typing import List
+import uuid
 import pytest
 
 from api.src.domus_ledger_api.modules.ledger.household.domain.member import Member
@@ -17,6 +18,7 @@ class MemberData:
     gender: str
     avatar: bytes
     role: MemberRole
+    household_id: uuid.UUID
 
 
 @pytest.fixture
@@ -29,6 +31,7 @@ def valid_member_data() -> MemberData:
         gender="Male",
         avatar=b"\x89PNG\r\n\x1a\n" + b"somebytes",
         role=MemberRole.ADMINISTRATOR,
+        household_id=uuid.uuid4(),
     )
 
 
@@ -61,4 +64,5 @@ def valid_member(valid_member_data: MemberData) -> Member:
         valid_member_data.gender,
         valid_member_data.avatar,
         valid_member_data.role,
+        valid_member_data.household_id,
     ).value

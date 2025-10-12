@@ -94,3 +94,11 @@ class HouseholdErrors:
             description="Multiple household found.",
             error_type=ErrorType.INVALID_STATE,
         )
+
+    @classmethod
+    def invalid_uuid(cls, id_name: str, id_type: str) -> Error:
+        return Error(
+            code=cls.INVALID_STATE_ERROR_CODE,
+            description=f"{id_name} is not a valid {id_type}.",
+            error_type=ErrorType.INVALID_STATE,
+        )

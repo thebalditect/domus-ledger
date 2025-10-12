@@ -3,6 +3,7 @@ import re
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Callable, List
+from uuid import UUID
 from api.src.domus_ledger_api.modules.ledger.household.domain.errors import (
     HouseholdErrors,
 )
@@ -22,6 +23,7 @@ class Member(BaseEntity):
     gender: str
     avatar: bytes
     role: MemberRole | None
+    household_id: UUID
 
     def __init__(
         self,
@@ -31,6 +33,7 @@ class Member(BaseEntity):
         gender: str,
         avatar: bytes,
         role: MemberRole | None,
+        household_id: UUID,
     ):
 
         super().__init__()
@@ -39,6 +42,7 @@ class Member(BaseEntity):
         self.birth_date = birth_date
         self.gender = gender
         self.avatar = avatar
+        self.household_id = household_id
 
         if role is None:
             self.role = MemberRole.REGULAR
@@ -54,6 +58,7 @@ class Member(BaseEntity):
         gender: str,
         avatar: bytes,
         role: MemberRole | None,
+        household_id: UUID,
     ) -> Result[Member]:
 
         errors: List[Error] = []
@@ -64,6 +69,7 @@ class Member(BaseEntity):
             lambda: cls._validate_age(birth_date),
             lambda: cls._validate_gender(gender),
             lambda: cls._validate_avatar(avatar),
+            lambda: cls._validate_household_id(household_id),
         )
 
         for validate in validators:
@@ -79,6 +85,7 @@ class Member(BaseEntity):
             gender=gender,
             avatar=avatar,
             role=role,
+            household_id=household_id,
         )
         return Result[Member].success(member)
 
@@ -156,3 +163,12 @@ class Member(BaseEntity):
             age -= 1
 
         return age
+
+    @staticmethod
+    def _validate_household_id(household_id: UUID) -> List[Error]:
+
+        try:
+            household_id = UUID(str(household_id), version=4)
+            return []
+        except ValueError:
+            return [HouseholdErrors.invalid_uuid("household_id", "UUID")]

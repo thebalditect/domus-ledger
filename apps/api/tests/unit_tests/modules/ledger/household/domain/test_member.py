@@ -21,6 +21,7 @@ def test_create_should_return_success_result(valid_member_data: MemberData) -> N
         valid_member_data.gender,
         valid_member_data.avatar,
         valid_member_data.role,
+        valid_member_data.household_id,
     )
 
     assert result.is_success
@@ -34,6 +35,7 @@ def test_create_should_return_success_result(valid_member_data: MemberData) -> N
     assert member.avatar == valid_member_data.avatar
     assert member.role == valid_member_data.role
     assert member.id is not None
+    assert member.household_id == valid_member_data.household_id
 
 
 def test_for_invalid_name_create_should_return_failure_result(
@@ -48,6 +50,7 @@ def test_for_invalid_name_create_should_return_failure_result(
             valid_member_data.gender,
             valid_member_data.avatar,
             valid_member_data.role,
+            valid_member_data.household_id,
         )
         assert result.is_failure
         assert not result.is_success
@@ -67,6 +70,7 @@ def test_for_invalid_email_create_should_return_failure_result(
             valid_member_data.gender,
             valid_member_data.avatar,
             valid_member_data.role,
+            valid_member_data.household_id,
         )
         assert result.is_failure
         assert not result.is_success
@@ -85,6 +89,7 @@ def test_for_invalid_gender_create_should_return_failure_result(
             gender,
             valid_member_data.avatar,
             valid_member_data.role,
+            valid_member_data.household_id,
         )
         assert result.is_failure
         assert not result.is_success
@@ -103,6 +108,7 @@ def test_for_non_png_type_avatar_create_should_return_failure_result(
             valid_member_data.gender,
             avatar,
             valid_member_data.role,
+            valid_member_data.household_id,
         )
         assert result.is_failure
         assert not result.is_success
@@ -120,6 +126,7 @@ def test_if_not_specified_default_member_role_should_be_regular(
         valid_member_data.gender,
         valid_member_data.avatar,
         None,
+        valid_member_data.household_id,
     )
 
     assert result.is_success
@@ -147,6 +154,7 @@ def test_create_should_return_failure_result_while_creating_unborn_member(
         valid_member_data.gender,
         valid_member_data.avatar,
         valid_member_data.role,
+        valid_member_data.household_id,
     )
 
     assert result.is_failure
@@ -167,6 +175,7 @@ def test_create_should_return_failure_result_while_creating_member_younger_than_
         valid_member_data.gender,
         valid_member_data.avatar,
         valid_member_data.role,
+        valid_member_data.household_id,
     )
 
     assert result.is_failure
@@ -175,6 +184,23 @@ def test_create_should_return_failure_result_while_creating_member_younger_than_
     assert (
         result.errors[0] == HouseholdErrors.member_younger_than_sixteen_years_of_age()
     )
+
+
+def test_create_should_return_failure_result_for_invalid_household_id(
+    valid_member_data: MemberData,
+) -> None:
+    result = Member.create(
+        valid_member_data.name,
+        valid_member_data.email,
+        valid_member_data.birth_date,
+        valid_member_data.gender,
+        valid_member_data.avatar,
+        valid_member_data.role,
+        None,  # type: ignore
+    )
+
+    assert result.is_failure
+    assert not result.is_success
 
 
 def test_create_should_list_all_possible_errors_and_return_failure_result() -> None:
@@ -186,11 +212,12 @@ def test_create_should_list_all_possible_errors_and_return_failure_result() -> N
         gender=" ",
         avatar=b"incorrect",
         role=MemberRole.REGULAR,
+        household_id=None,  # type: ignore
     )
 
     assert result.is_failure
     assert not result.is_success
-    assert len(result.errors) == 5
+    assert len(result.errors) == 6
 
     expected_errors = [
         HouseholdErrors.invalid_name(),
@@ -198,5 +225,6 @@ def test_create_should_list_all_possible_errors_and_return_failure_result() -> N
         HouseholdErrors.member_younger_than_sixteen_years_of_age(),
         HouseholdErrors.invalid_gender(),
         HouseholdErrors.invalid_image_format(),
+        HouseholdErrors.invalid_uuid("household_id", "UUID"),
     ]
     assert result.errors == expected_errors
