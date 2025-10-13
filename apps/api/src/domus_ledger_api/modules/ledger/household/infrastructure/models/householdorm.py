@@ -22,7 +22,7 @@ class HouseholdORM(Base):
     description: Mapped[str] = mapped_column(
         name="description", type_=String(200), nullable=False
     )
-    members: Mapped[List[MemberORM]] = relationship(
+    members: Mapped[List["MemberORM"]] = relationship(
         "MemberORM",
         back_populates="household",
         cascade="all, delete-orphan",

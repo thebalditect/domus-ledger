@@ -41,6 +41,6 @@ class MemberORM(Base):
     household_id: Mapped[uuid.UUID] = mapped_column(
         ForeignKey("households.id"), nullable=False
     )
-    household: Mapped[HouseholdORM] = relationship(
+    household: Mapped["HouseholdORM"] = relationship(
         "HouseholdORM", back_populates="members"
     )

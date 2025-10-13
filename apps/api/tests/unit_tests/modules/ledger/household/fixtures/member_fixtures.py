@@ -8,6 +8,9 @@ from api.src.domus_ledger_api.modules.ledger.household.domain.member import Memb
 from api.src.domus_ledger_api.modules.ledger.household.domain.member_role import (
     MemberRole,
 )
+from api.src.domus_ledger_api.modules.ledger.household.infrastructure.models.memberorm import (
+    MemberORM,
+)
 
 
 @dataclass
@@ -66,3 +69,18 @@ def valid_member(valid_member_data: MemberData) -> Member:
         valid_member_data.role,
         valid_member_data.household_id,
     ).value
+
+
+@pytest.fixture
+def valid_member_orm(valid_member: Member) -> MemberORM:
+
+    return MemberORM(
+        id=valid_member.id,
+        name=valid_member.name,
+        email=valid_member.email,
+        gender=valid_member.gender,
+        birth_date=valid_member.birth_date,
+        avatar=valid_member.avatar,
+        role=valid_member.role,
+        household_id=valid_member.household_id,
+    )
