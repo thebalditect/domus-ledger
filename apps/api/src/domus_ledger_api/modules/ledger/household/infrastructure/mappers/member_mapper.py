@@ -24,7 +24,7 @@ class MemberMapper:
 
     @classmethod
     def to_domain(cls, member_orm: MemberORM) -> Member:
-        member = Member(
+        member_result = Member.create(
             name=member_orm.name,
             email=member_orm.email,
             birth_date=member_orm.birth_date,
@@ -33,5 +33,12 @@ class MemberMapper:
             role=member_orm.role,
             household_id=member_orm.household_id,
         )
+        if member_result.is_failure:
+            error_message = ""
+            for error in member_result.errors:
+                error_message = error_message + error.description + "\n"
+            raise ValueError(error_message)
+
+        member = member_result.value
         object.__setattr__(member, "id", member_orm.id)
         return member

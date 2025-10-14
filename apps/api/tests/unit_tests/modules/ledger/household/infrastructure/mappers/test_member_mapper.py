@@ -1,3 +1,4 @@
+import pytest
 from api.src.domus_ledger_api.modules.ledger.household.domain.member import Member
 from api.src.domus_ledger_api.modules.ledger.household.infrastructure.mappers.member_mapper import (
     MemberMapper,
@@ -29,3 +30,15 @@ def test_to_domain_should_return_member_entity_instance(valid_member_orm: Member
 
     assert member.id == valid_member_orm.id
     assert member.name == member_orm.name
+
+
+def test_to_domain_should_raise_value_error_for_invalid_member_orm_instance(
+    valid_member_orm: MemberORM,
+) -> None:
+    invalid_member_orm = valid_member_orm
+    invalid_member_orm.name = ""
+
+    expected_error_message = "name cannot be empty or whitespace." + "\n"
+
+    with pytest.raises(ValueError, match=expected_error_message):
+        MemberMapper.to_domain(invalid_member_orm)
