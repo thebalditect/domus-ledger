@@ -23,6 +23,8 @@ def test_to_orm_should_return_member_orm_instance(valid_member: Member) -> None:
     assert member_orm.avatar == member.avatar
     assert member_orm.role == member.role
     assert member_orm.household_id == member.household_id
+    assert member_orm.created_on == member.created_on
+    assert member_orm.updated_on == member.updated_on
 
 
 def test_to_domain_should_return_member_entity_instance(
@@ -34,6 +36,8 @@ def test_to_domain_should_return_member_entity_instance(
 
     assert member.id == valid_member_orm.id
     assert member.name == member_orm.name
+    assert member.created_on == member_orm.created_on
+    assert member.updated_on == member_orm.updated_on
 
 
 def test_to_domain_should_raise_value_error_for_invalid_member_orm_instance(

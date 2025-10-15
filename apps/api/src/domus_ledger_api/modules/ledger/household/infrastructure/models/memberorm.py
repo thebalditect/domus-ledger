@@ -44,3 +44,9 @@ class MemberORM(Base):
     household: Mapped["HouseholdORM"] = relationship(
         "HouseholdORM", back_populates="members"
     )
+    created_on: Mapped[DateTime] = mapped_column(
+        name="created_on", type_=DateTime, nullable=False
+    )
+    updated_on: Mapped[datetime] = mapped_column(
+        "updated_on", type_=DateTime, nullable=False
+    )

@@ -24,6 +24,8 @@ def test_create_should_return_success_result(
     assert not result.is_failure
     assert result.value.name == valid_household_data.name
     assert result.value.description == valid_household_data.description
+    assert result.value.created_on is not None
+    assert result.value.updated_on is not None
 
 
 def test_create_should_return_failure_result_for_invalid_household_name(

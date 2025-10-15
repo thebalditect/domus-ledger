@@ -38,6 +38,8 @@ def test_create_should_return_success_result(valid_member_data: MemberData) -> N
     assert member.role == valid_member_data.role
     assert member.id is not None
     assert member.household_id == valid_member_data.household_id
+    assert member.created_on is not None
+    assert member.updated_on is not None
 
 
 def test_for_invalid_name_create_should_return_failure_result(

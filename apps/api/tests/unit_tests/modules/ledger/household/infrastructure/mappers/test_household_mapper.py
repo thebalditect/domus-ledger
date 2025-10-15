@@ -23,6 +23,8 @@ def test_to_orm_should_return_household_orm_instance(
     assert household_orm.id == household.id
     assert household_orm.name == household.name
     assert household_orm.description == household.description
+    assert household_orm.created_on == household.created_on
+    assert household_orm.updated_on == household.updated_on
     assert len(household_orm.members) == len(household.members)
 
 
@@ -38,6 +40,8 @@ def test_to_domain_should_return_household_domain_entity_instance() -> None:
     assert household.id == household_orm.id
     assert household.name == household_orm.name
     assert household.description == household_orm.description
+    assert household.created_on == household_orm.created_on
+    assert household.updated_on == household_orm.updated_on
 
 
 def test_to_domain_should_throw_value_error_for_incorrect_household_orm_instance() -> (

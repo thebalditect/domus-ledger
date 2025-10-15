@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import List
 import uuid
 import pytest
@@ -85,4 +85,6 @@ def valid_member_orm(valid_member: Member) -> MemberORM:
         avatar=valid_member.avatar,
         role=valid_member.role,
         household_id=valid_member.household_id,
+        created_on=datetime.now(timezone.utc),
+        updated_on=datetime.now(timezone.utc),
     )

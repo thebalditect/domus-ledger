@@ -21,6 +21,8 @@ class HouseholdMapper:
             name=household.name,
             description=household.description,
             members=members,
+            created_on=household.created_on,
+            updated_on=household.updated_on,
         )
         return householdorm
 
@@ -41,4 +43,6 @@ class HouseholdMapper:
         household = create_result.value
 
         object.__setattr__(household, "id", household_orm.id)
+        object.__setattr__(household, "created_on", household_orm.created_on)
+        object.__setattr__(household, "updated_on", household_orm.updated_on)
         return household

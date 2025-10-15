@@ -1,7 +1,8 @@
+from datetime import datetime
 from typing import List, TYPE_CHECKING
 import uuid
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from sqlalchemy import UUID, String
+from sqlalchemy import UUID, DateTime, String
 from api.src.domus_ledger_api.modules.ledger.household.infrastructure.models.base import (
     Base,
 )
@@ -27,4 +28,10 @@ class HouseholdORM(Base):
         back_populates="household",
         cascade="all, delete-orphan",
         lazy="joined",
+    )
+    created_on: Mapped[datetime] = mapped_column(
+        name="created_on", type_=DateTime, nullable=False
+    )
+    updated_on: Mapped[datetime] = mapped_column(
+        name="updated_on", type_=DateTime, nullable=False
     )

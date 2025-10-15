@@ -20,6 +20,8 @@ class MemberMapper:
             avatar=member.avatar,
             role=member.role,
             household_id=member.household_id,
+            created_on=member.created_on,
+            updated_on=member.updated_on,
         )
 
         return member_orm
@@ -43,4 +45,6 @@ class MemberMapper:
 
         member = member_result.value
         object.__setattr__(member, "id", member_orm.id)
+        object.__setattr__(member, "created_on", member_orm.created_on)
+        object.__setattr__(member, "updated_on", member_orm.updated_on)
         return member
