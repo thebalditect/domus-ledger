@@ -8,7 +8,7 @@ class SampleEntity(BaseEntity):
     name: str = field(init=True)
 
     def __init__(self, name: str):
-        super().__init__()
+        super().__init__(None, None)
         self.name = name
 
 
@@ -17,7 +17,7 @@ class DifferentSampleEntity(BaseEntity):
     name: str = field(init=True)
 
     def __init__(self, name: str):
-        super().__init__()
+        super().__init__(None, None)
         self.name = name
 
 
@@ -44,8 +44,9 @@ def test_two_entity_subtypes_are_not_equal() -> None:
     assert e1 != e2
 
 
-def test_entity_has_id_and_createdon() -> None:
+def test_entity_has_id_and_createdon_and_updatedon() -> None:
     e1 = SampleEntity("foo")
 
     assert e1.id is not None
     assert e1.created_on is not None
+    assert e1.updated_on is not None

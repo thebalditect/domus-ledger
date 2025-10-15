@@ -20,7 +20,7 @@ class Household(BaseEntity):
 
     def __init__(self, name: str, description: str):
 
-        super().__init__()
+        super().__init__(None, None)
         self.name = name
         self.description = description
         self.members = []

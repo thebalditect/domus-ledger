@@ -36,7 +36,7 @@ class Member(BaseEntity):
         household_id: UUID,
     ):
 
-        super().__init__()
+        super().__init__(None, None)
         self.name = name
         self.email = email
         self.birth_date = birth_date
