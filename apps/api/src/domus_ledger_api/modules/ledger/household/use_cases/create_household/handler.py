@@ -8,6 +8,9 @@ from api.src.domus_ledger_api.shared_kernel.domain.result import Result
 from api.src.domus_ledger_api.modules.ledger.household.domain.entities.errors import (
     HouseholdErrors,
 )
+from api.src.domus_ledger_api.modules.ledger.household.domain.entities.household import (
+    Household,
+)
 
 
 class CreateHouseholdCommandHandler:
@@ -30,4 +33,19 @@ class CreateHouseholdCommandHandler:
                 return Result[None].failure(get_household_result.errors)
 
             ## Create household
+            household_domain_create_result = Household.create(
+                command.name, command.description
+            )
+
+            if household_domain_create_result.is_failure:
+                return Result[None].failure(household_domain_create_result.errors)
+
+            async with self.uow:
+                persist_result = self.uow.respository.create_household(
+                    household_domain_create_result.value
+                )
+
+                if persist_result.is_failure:
+                    return Result[None].failure(persist_result.errors)
+
             return Result[None].success(None)

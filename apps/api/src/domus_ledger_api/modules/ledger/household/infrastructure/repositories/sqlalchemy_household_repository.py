@@ -41,3 +41,11 @@ class SqlAlchemyHouseholdRepository(AbstractHouseholdRepository):
         household = HouseholdMapper.to_domain(household_orm)
 
         return Result[Household].success(household)
+
+    def create_household(self, household: Household) -> Result[None]:
+
+        household_orm = HouseholdMapper.to_orm(household)
+
+        self.async_session.add(household_orm)
+
+        return Result[None].success(None)

@@ -6,6 +6,11 @@ from api.src.domus_ledger_api.shared_kernel.domain.result import Result
 
 
 class AbstractHouseholdRepository(ABC):
+
     @abstractmethod
     async def get_household(self) -> Result[Household]:
+        pass
+
+    @abstractmethod
+    def create_household(self, household: Household) -> Result[None]:
         pass
