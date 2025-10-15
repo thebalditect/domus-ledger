@@ -88,6 +88,14 @@ class HouseholdErrors:
         )
 
     @classmethod
+    def household_already_exists(cls) -> Error:
+        return Error(
+            code=cls.NOT_FOUND_ERROR_CODE,
+            description="Household already exists.",
+            error_type=ErrorType.CONFLICT,
+        )
+
+    @classmethod
     def multiple_household_found(cls) -> Error:
         return Error(
             code=cls.INVALID_STATE_ERROR_CODE,
