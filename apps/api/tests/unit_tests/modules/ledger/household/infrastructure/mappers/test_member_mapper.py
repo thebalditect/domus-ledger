@@ -1,5 +1,7 @@
 import pytest
-from api.src.domus_ledger_api.modules.ledger.household.domain.member import Member
+from api.src.domus_ledger_api.modules.ledger.household.domain.entities.member import (
+    Member,
+)
 from api.src.domus_ledger_api.modules.ledger.household.infrastructure.mappers.member_mapper import (
     MemberMapper,
 )
@@ -8,7 +10,7 @@ from api.src.domus_ledger_api.modules.ledger.household.infrastructure.models imp
 )
 
 
-def test_to_orm_should_return_member_orm_instance(valid_member: Member):
+def test_to_orm_should_return_member_orm_instance(valid_member: Member) -> None:
     member = valid_member
 
     member_orm = MemberMapper.to_orm(member)
@@ -23,7 +25,9 @@ def test_to_orm_should_return_member_orm_instance(valid_member: Member):
     assert member_orm.household_id == member.household_id
 
 
-def test_to_domain_should_return_member_entity_instance(valid_member_orm: MemberORM):
+def test_to_domain_should_return_member_entity_instance(
+    valid_member_orm: MemberORM,
+) -> None:
     member_orm = valid_member_orm
 
     member = MemberMapper.to_domain(member_orm)

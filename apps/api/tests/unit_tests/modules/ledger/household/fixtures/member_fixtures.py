@@ -4,8 +4,10 @@ from typing import List
 import uuid
 import pytest
 
-from api.src.domus_ledger_api.modules.ledger.household.domain.member import Member
-from api.src.domus_ledger_api.modules.ledger.household.domain.member_role import (
+from api.src.domus_ledger_api.modules.ledger.household.domain.entities.member import (
+    Member,
+)
+from api.src.domus_ledger_api.modules.ledger.household.domain.entities.member_role import (
     MemberRole,
 )
 from api.src.domus_ledger_api.modules.ledger.household.infrastructure.models.memberorm import (

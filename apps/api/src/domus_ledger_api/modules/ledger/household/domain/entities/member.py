@@ -4,10 +4,10 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Callable, List
 from uuid import UUID
-from api.src.domus_ledger_api.modules.ledger.household.domain.errors import (
+from api.src.domus_ledger_api.modules.ledger.household.domain.entities.errors import (
     HouseholdErrors,
 )
-from api.src.domus_ledger_api.modules.ledger.household.domain.member_role import (
+from api.src.domus_ledger_api.modules.ledger.household.domain.entities.member_role import (
     MemberRole,
 )
 from api.src.domus_ledger_api.shared_kernel.domain.base_entity import BaseEntity

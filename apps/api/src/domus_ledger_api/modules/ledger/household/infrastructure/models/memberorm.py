@@ -6,7 +6,7 @@ from datetime import datetime
 from api.src.domus_ledger_api.modules.ledger.household.infrastructure.models.base import (
     Base,
 )
-from api.src.domus_ledger_api.modules.ledger.household.domain.member_role import (
+from api.src.domus_ledger_api.modules.ledger.household.domain.entities.member_role import (
     MemberRole,
 )
 

@@ -1,4 +1,6 @@
-from api.src.domus_ledger_api.modules.ledger.household.domain.member import Member
+from api.src.domus_ledger_api.modules.ledger.household.domain.entities.member import (
+    Member,
+)
 from api.src.domus_ledger_api.modules.ledger.household.infrastructure.models.memberorm import (
     MemberORM,
 )

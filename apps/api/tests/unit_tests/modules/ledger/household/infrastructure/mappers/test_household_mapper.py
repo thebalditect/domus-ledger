@@ -1,7 +1,9 @@
 import uuid
 
 import pytest
-from api.src.domus_ledger_api.modules.ledger.household.domain.household import Household
+from api.src.domus_ledger_api.modules.ledger.household.domain.entities.household import (
+    Household,
+)
 from api.src.domus_ledger_api.modules.ledger.household.infrastructure.mappers.household_mapper import (
     HouseholdMapper,
 )

@@ -1,10 +1,12 @@
 from datetime import datetime, timedelta
 from typing import List
-from api.src.domus_ledger_api.modules.ledger.household.domain.errors import (
+from api.src.domus_ledger_api.modules.ledger.household.domain.entities.errors import (
     HouseholdErrors,
 )
-from api.src.domus_ledger_api.modules.ledger.household.domain.member import Member
-from api.src.domus_ledger_api.modules.ledger.household.domain.member_role import (
+from api.src.domus_ledger_api.modules.ledger.household.domain.entities.member import (
+    Member,
+)
+from api.src.domus_ledger_api.modules.ledger.household.domain.entities.member_role import (
     MemberRole,
 )
 from api.tests.unit_tests.modules.ledger.household.fixtures.member_fixtures import (
