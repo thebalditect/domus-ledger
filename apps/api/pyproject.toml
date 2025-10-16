@@ -27,3 +27,10 @@ dev = [
     "coverage (>=7.10.7,<8.0.0)",
     "pytest-asyncio (>=1.2.0,<2.0.0)"
 ]
+
+[tool.coverage.report]
+exclude_also = [
+    
+    # Don't complain about abstract methods, they aren't run:
+    "@(abc\\.)?abstractmethod",
+    ]
