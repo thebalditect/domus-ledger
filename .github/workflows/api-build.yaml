@@ -50,14 +50,12 @@ jobs:
               id: run-tests
               working-directory: ${{ env.PROJECT_DIR }}
               run: |
-                    poetry run coverage run -m pytest
+                    export PYTHONPATH=$PYTHONPATH:$(pwd)/../../
+                    poetry run coverage run --source=api -m pytest
                     poetry run coverage xml
                     poetry run coverage report -m
                     ls -lh coverage.xml
-                    
-            - name: Move coverage report
-              run: mv apps/api/coverage.xml ./coverage.xml
-            
+
             - name: Upload Code Coverage to Sonar Cloud
               id: upload-code-coverage
               uses: SonarSource/sonarqube-scan-action@v6
