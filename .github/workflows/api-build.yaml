@@ -53,6 +53,10 @@ jobs:
                     poetry run coverage run -m pytest
                     poetry run coverage xml
                     poetry run coverage report -m
+                    ls -lh coverage.xml
+                    
+            - name: Move coverage report
+              run: mv apps/api/coverage.xml ./coverage.xml
             
             - name: Upload Code Coverage to Sonar Cloud
               id: upload-code-coverage

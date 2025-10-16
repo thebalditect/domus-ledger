@@ -28,13 +28,20 @@ dev = [
     "pytest-asyncio (>=1.2.0,<2.0.0)"
 ]
 
-[tool.coverage.report]
-source = ["domus-ledger-domus_ledger_api"]
+[tool.coverage.run]
+source = ["apps/api/src/domus_ledger_api"]
 branch = true
 parallel = true
-command_line = "-m pytest"
+
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
 exclude_also = [
     
     # Don't complain about abstract methods, they aren't run:
     "@(abc\\.)?abstractmethod",
     ]
+
+[tool.coverage.xml]
+output = "coverage.xml"
