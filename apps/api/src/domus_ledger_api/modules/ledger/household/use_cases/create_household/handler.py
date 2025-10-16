@@ -45,7 +45,4 @@ class CreateHouseholdCommandHandler:
                     household_domain_create_result.value
                 )
 
-                if persist_result.is_failure:
-                    return Result[None].failure(persist_result.errors)
-
-            return Result[None].success(None)
+                return persist_result
