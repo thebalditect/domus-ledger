@@ -13,7 +13,7 @@ from api.src.domus_ledger_api.modules.ledger.household.use_cases.get_household.h
 from api.src.domus_ledger_api.modules.ledger.household.use_cases.get_household.response import (
     QueryResponse,
 )
-from apps.api.src.domus_ledger_api.modules.ledger.household.domain.entities.errors import (
+from api.src.domus_ledger_api.modules.ledger.household.domain.entities.errors import (
     HouseholdErrors,
 )
 
@@ -54,7 +54,7 @@ async def test_handle_should_return_failure_result_when_no_household_is_found() 
 
 
 @pytest.mark.asyncio
-async def test_handler_should_return_failure_result_when_multiple_households_are_found() -> (
+async def test_handle_should_return_failure_result_when_multiple_households_are_found() -> (
     None
 ):
     household_repository = AsyncMock(spec=AbstractHouseholdRepository)
