@@ -35,7 +35,7 @@ async def test_handle_should_return_success_result_with_query_response() -> None
     assert result.is_success
     household_retrieved: QueryResponse = result.value
     assert household_retrieved.name == household.name
-    assert household.description == household.description
+    assert household_retrieved.description == household.description
 
 
 @pytest.mark.asyncio
