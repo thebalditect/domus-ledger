@@ -42,7 +42,7 @@ class SqlAlchemyHouseholdRepository(AbstractHouseholdRepository):
 
         return Result[Household].success(household)
 
-    def create_household(self, household: Household) -> Result[None]:
+    async def create_household(self, household: Household) -> Result[None]:
 
         household_orm = HouseholdMapper.to_orm(household)
 

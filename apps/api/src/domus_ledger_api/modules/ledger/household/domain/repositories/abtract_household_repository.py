@@ -12,5 +12,5 @@ class AbstractHouseholdRepository(ABC):
         pass
 
     @abstractmethod
-    def create_household(self, household: Household) -> Result[None]:
+    async def create_household(self, household: Household) -> Result[None]:
         pass

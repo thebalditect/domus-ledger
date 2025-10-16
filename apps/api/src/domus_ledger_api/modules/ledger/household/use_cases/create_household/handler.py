@@ -41,7 +41,7 @@ class CreateHouseholdCommandHandler:
                 return Result[None].failure(household_domain_create_result.errors)
 
             async with self.uow:
-                persist_result = self.uow.respository.create_household(
+                persist_result = await self.uow.respository.create_household(
                     household_domain_create_result.value
                 )
 
