@@ -26,11 +26,11 @@ from api.src.domus_ledger_api.shared_kernel.domain.result import Result
 async def test_handle_should_return_success_result() -> None:
 
     household_uow = AsyncMock(spec=AbstractHouseholdUnitOfWork)
-    household_uow.respository = AsyncMock(spec=AbstractHouseholdRepository)
-    household_uow.respository.get_household.return_value = Result[Household].failure(
+    household_uow.repository = AsyncMock(spec=AbstractHouseholdRepository)
+    household_uow.repository.get_household.return_value = Result[Household].failure(
         HouseholdErrors.household_not_found()
     )
-    household_uow.respository.create_household.return_value = Result[None].success(None)
+    household_uow.repository.create_household.return_value = Result[None].success(None)
 
     create_command = CreateHouseholdCommand(name="test", description="test")
 
@@ -39,7 +39,7 @@ async def test_handle_should_return_success_result() -> None:
     result = await handler.handle(create_command)
 
     assert result.is_success
-    household_uow.respository.create_household.assert_called_once()
+    household_uow.repository.create_household.assert_called_once()
 
 
 @pytest.mark.asyncio
@@ -48,11 +48,11 @@ async def test_handle_should_return_failure_result_when_household_already_exist(
 ) -> None:
 
     household_uow = AsyncMock(spec=AbstractHouseholdUnitOfWork)
-    household_uow.respository = AsyncMock(spec=AbstractHouseholdRepository)
-    household_uow.respository.get_household.return_value = Result[Household].success(
+    household_uow.repository = AsyncMock(spec=AbstractHouseholdRepository)
+    household_uow.repository.get_household.return_value = Result[Household].success(
         valid_household
     )
-    household_uow.respository.create_household.return_value = Result[None].failure(
+    household_uow.repository.create_household.return_value = Result[None].failure(
         HouseholdErrors.household_already_exists()
     )
 
@@ -71,11 +71,11 @@ async def test_handle_should_return_failure_when_multiple_household_exist(
     valid_household: Household,
 ) -> None:
     household_uow = AsyncMock(spec=AbstractHouseholdUnitOfWork)
-    household_uow.respository = AsyncMock(spec=AbstractHouseholdRepository)
-    household_uow.respository.get_household.return_value = Result[Household].failure(
+    household_uow.repository = AsyncMock(spec=AbstractHouseholdRepository)
+    household_uow.repository.get_household.return_value = Result[Household].failure(
         HouseholdErrors.multiple_household_found()
     )
-    household_uow.respository.create_household.return_value = Result[None].failure(
+    household_uow.repository.create_household.return_value = Result[None].failure(
         HouseholdErrors.multiple_household_found()
     )
 
@@ -94,11 +94,11 @@ async def test_handle_should_return_failure_result_for_domain_validation_failure
     None
 ):
     household_uow = AsyncMock(spec=AbstractHouseholdUnitOfWork)
-    household_uow.respository = AsyncMock(spec=AbstractHouseholdRepository)
-    household_uow.respository.get_household.return_value = Result[Household].failure(
+    household_uow.repository = AsyncMock(spec=AbstractHouseholdRepository)
+    household_uow.repository.get_household.return_value = Result[Household].failure(
         HouseholdErrors.household_not_found()
     )
-    household_uow.respository.create_household.return_value = Result[None].success(None)
+    household_uow.repository.create_household.return_value = Result[None].success(None)
 
     create_command = CreateHouseholdCommand(name="", description="")
 

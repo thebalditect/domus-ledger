@@ -9,7 +9,7 @@ from api.src.domus_ledger_api.modules.ledger.household.domain.repositories.abtra
 
 class AbstractHouseholdUnitOfWork(ABC):
 
-    respository: AbstractHouseholdRepository
+    repository: AbstractHouseholdRepository
 
     @abstractmethod
     async def __aenter__(self) -> Self:

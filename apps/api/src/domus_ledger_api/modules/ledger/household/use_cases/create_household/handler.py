@@ -22,7 +22,7 @@ class CreateHouseholdCommandHandler:
 
         async with self.uow:
 
-            get_household_result = await self.uow.respository.get_household()
+            get_household_result = await self.uow.repository.get_household()
 
             if get_household_result.is_success:
                 return Result[None].failure(HouseholdErrors.household_already_exists())
@@ -41,7 +41,7 @@ class CreateHouseholdCommandHandler:
                 return Result[None].failure(household_domain_create_result.errors)
 
             async with self.uow:
-                persist_result = await self.uow.respository.create_household(
+                persist_result = await self.uow.repository.create_household(
                     household_domain_create_result.value
                 )
 
