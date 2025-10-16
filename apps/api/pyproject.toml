@@ -28,10 +28,6 @@ dev = [
     "pytest-asyncio (>=1.2.0,<2.0.0)"
 ]
 
-[tool.coverage.run]
-source = ["api"]
-branch = true
-parallel = true
 
 
 [tool.coverage.report]
