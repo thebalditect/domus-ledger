@@ -5,7 +5,7 @@ def test_shared_kernel_should_not_depend_on_business_modules(
     get_evaluable_architecture: EvaluableArchitecture,
 ) -> None:
     """Shared kernel independence test."""
-    all_modules = [m for m in get_evaluable_architecture.modules]
+    all_modules = list(get_evaluable_architecture.modules)
 
     # Check if business modules exist
     has_modules_folder = any(".modules." in m for m in all_modules)
