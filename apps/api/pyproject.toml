@@ -29,7 +29,7 @@ dev = [
 ]
 
 [tool.coverage.run]
-source = ["apps/api/src/domus_ledger_api"]
+source = ["api"]
 branch = true
 parallel = true
 
