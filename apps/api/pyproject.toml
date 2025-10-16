@@ -29,6 +29,10 @@ dev = [
 ]
 
 [tool.coverage.report]
+source = ["domus-ledger-domus_ledger_api"]
+branch = true
+parallel = true
+command_line = "-m pytest"
 exclude_also = [
     
     # Don't complain about abstract methods, they aren't run:

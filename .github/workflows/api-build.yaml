@@ -53,3 +53,9 @@ jobs:
                     poetry run coverage run -m pytest
                     poetry run coverage xml
                     poetry run coverage report -m
+            
+            - name: Upload Code Coverage to Sonar Cloud
+              id: upload-code-coverage
+              uses: SonarSource/sonarqube-scan-action@v6
+              env:
+                SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
