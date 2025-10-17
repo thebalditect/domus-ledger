@@ -1,14 +1,14 @@
-from api.src.domus_ledger_api.modules.ledger.household.use_cases.abstractions.uow.abstract_household_uow import (
+from domus_ledger_api.modules.ledger.household.use_cases.abstractions.uow.abstract_household_uow import (
     AbstractHouseholdUnitOfWork,
 )
-from api.src.domus_ledger_api.modules.ledger.household.use_cases.create_household.command import (
+from domus_ledger_api.modules.ledger.household.use_cases.create_household.command import (
     CreateHouseholdCommand,
 )
-from api.src.domus_ledger_api.shared_kernel.domain.result import Result
-from api.src.domus_ledger_api.modules.ledger.household.domain.entities.errors import (
+from domus_ledger_api.shared_kernel.domain.result import Result
+from domus_ledger_api.modules.ledger.household.domain.entities.errors import (
     HouseholdErrors,
 )
-from api.src.domus_ledger_api.modules.ledger.household.domain.entities.household import (
+from domus_ledger_api.modules.ledger.household.domain.entities.household import (
     Household,
 )
 

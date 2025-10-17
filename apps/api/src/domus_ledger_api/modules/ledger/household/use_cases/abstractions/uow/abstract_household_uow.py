@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from types import TracebackType
 from typing import Self
 
-from api.src.domus_ledger_api.modules.ledger.household.domain.repositories.abtract_household_repository import (
+from domus_ledger_api.modules.ledger.household.domain.repositories.abtract_household_repository import (
     AbstractHouseholdRepository,
 )
 

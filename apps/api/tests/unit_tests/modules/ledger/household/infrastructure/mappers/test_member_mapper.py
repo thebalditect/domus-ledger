@@ -1,11 +1,11 @@
 import pytest
-from api.src.domus_ledger_api.modules.ledger.household.domain.entities.member import (
+from domus_ledger_api.modules.ledger.household.domain.entities.member import (
     Member,
 )
-from api.src.domus_ledger_api.modules.ledger.household.infrastructure.mappers.member_mapper import (
+from domus_ledger_api.modules.ledger.household.infrastructure.mappers.member_mapper import (
     MemberMapper,
 )
-from api.src.domus_ledger_api.modules.ledger.household.infrastructure.models import (
+from domus_ledger_api.modules.ledger.household.infrastructure.models import (
     MemberORM,
 )
 

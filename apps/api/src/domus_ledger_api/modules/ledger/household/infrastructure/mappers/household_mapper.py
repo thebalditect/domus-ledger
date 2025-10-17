@@ -1,10 +1,10 @@
-from api.src.domus_ledger_api.modules.ledger.household.domain.entities.household import (
+from domus_ledger_api.modules.ledger.household.domain.entities.household import (
     Household,
 )
-from api.src.domus_ledger_api.modules.ledger.household.infrastructure.models.householdorm import (
+from domus_ledger_api.modules.ledger.household.infrastructure.models.householdorm import (
     HouseholdORM,
 )
-from api.src.domus_ledger_api.modules.ledger.household.infrastructure.mappers.member_mapper import (
+from domus_ledger_api.modules.ledger.household.infrastructure.mappers.member_mapper import (
     MemberMapper,
 )
 

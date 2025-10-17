@@ -1,6 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass
-from api.src.domus_ledger_api.shared_kernel.domain.error_type import ErrorType
+from domus_ledger_api.shared_kernel.domain.error_type import ErrorType
 
 
 @dataclass(frozen=True)

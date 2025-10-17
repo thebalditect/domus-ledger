@@ -1,10 +1,10 @@
-from api.src.domus_ledger_api.modules.ledger.household.domain.repositories.abtract_household_repository import (
+from domus_ledger_api.modules.ledger.household.domain.repositories.abtract_household_repository import (
     AbstractHouseholdRepository,
 )
-from api.src.domus_ledger_api.modules.ledger.household.use_cases.get_household.response import (
+from domus_ledger_api.modules.ledger.household.use_cases.get_household.response import (
     QueryResponse,
 )
-from api.src.domus_ledger_api.shared_kernel.domain.result import Result
+from domus_ledger_api.shared_kernel.domain.result import Result
 
 
 class GetHouseholdQueryHandler:

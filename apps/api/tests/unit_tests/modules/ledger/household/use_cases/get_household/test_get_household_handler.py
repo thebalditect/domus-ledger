@@ -1,19 +1,19 @@
 import pytest
 from unittest.mock import AsyncMock
-from api.src.domus_ledger_api.modules.ledger.household.domain.repositories.abtract_household_repository import (
+from domus_ledger_api.modules.ledger.household.domain.repositories.abtract_household_repository import (
     AbstractHouseholdRepository,
 )
-from api.src.domus_ledger_api.modules.ledger.household.domain.entities.household import (
+from domus_ledger_api.modules.ledger.household.domain.entities.household import (
     Household,
 )
-from api.src.domus_ledger_api.shared_kernel.domain.result import Result
-from api.src.domus_ledger_api.modules.ledger.household.use_cases.get_household.handler import (
+from domus_ledger_api.shared_kernel.domain.result import Result
+from domus_ledger_api.modules.ledger.household.use_cases.get_household.handler import (
     GetHouseholdQueryHandler,
 )
-from api.src.domus_ledger_api.modules.ledger.household.use_cases.get_household.response import (
+from domus_ledger_api.modules.ledger.household.use_cases.get_household.response import (
     QueryResponse,
 )
-from api.src.domus_ledger_api.modules.ledger.household.domain.entities.errors import (
+from domus_ledger_api.modules.ledger.household.domain.entities.errors import (
     HouseholdErrors,
 )
 

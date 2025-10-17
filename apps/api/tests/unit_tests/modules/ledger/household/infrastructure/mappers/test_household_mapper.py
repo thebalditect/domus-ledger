@@ -1,14 +1,14 @@
 import uuid
 
 import pytest
-from api.src.domus_ledger_api.modules.ledger.household.domain.entities.household import (
+from domus_ledger_api.modules.ledger.household.domain.entities.household import (
     Household,
 )
-from api.src.domus_ledger_api.modules.ledger.household.infrastructure.mappers.household_mapper import (
+from domus_ledger_api.modules.ledger.household.infrastructure.mappers.household_mapper import (
     HouseholdMapper,
 )
 
-from api.src.domus_ledger_api.modules.ledger.household.infrastructure.models import (
+from domus_ledger_api.modules.ledger.household.infrastructure.models import (
     HouseholdORM,
 )
 

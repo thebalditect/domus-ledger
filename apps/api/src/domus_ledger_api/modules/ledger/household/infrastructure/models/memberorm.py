@@ -3,16 +3,16 @@ from typing import TYPE_CHECKING
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import UUID, String, DateTime, LargeBinary, Enum, ForeignKey
 from datetime import datetime
-from api.src.domus_ledger_api.modules.ledger.household.infrastructure.models.base import (
+from domus_ledger_api.modules.ledger.household.infrastructure.models.base import (
     Base,
 )
-from api.src.domus_ledger_api.modules.ledger.household.domain.entities.member_role import (
+from domus_ledger_api.modules.ledger.household.domain.entities.member_role import (
     MemberRole,
 )
 
 
 if TYPE_CHECKING:
-    from api.src.domus_ledger_api.modules.ledger.household.infrastructure.models.householdorm import (
+    from domus_ledger_api.modules.ledger.household.infrastructure.models.householdorm import (
         HouseholdORM,
     )
 

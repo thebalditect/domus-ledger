@@ -41,3 +41,12 @@ exclude_also = [
 
 [tool.coverage.xml]
 output = "coverage.xml"
+
+[tool.mypy]
+mypy_path = "src"
+explicit_package_bases = true
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+

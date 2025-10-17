@@ -3,12 +3,12 @@ from typing import List, TYPE_CHECKING
 import uuid
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import UUID, DateTime, String
-from api.src.domus_ledger_api.modules.ledger.household.infrastructure.models.base import (
+from domus_ledger_api.modules.ledger.household.infrastructure.models.base import (
     Base,
 )
 
 if TYPE_CHECKING:
-    from api.src.domus_ledger_api.modules.ledger.household.infrastructure.models.memberorm import (
+    from domus_ledger_api.modules.ledger.household.infrastructure.models.memberorm import (
         MemberORM,
     )
 

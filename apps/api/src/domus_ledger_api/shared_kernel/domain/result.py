@@ -2,7 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Generic, Optional, TypeVar, List, Union
 
-from api.src.domus_ledger_api.shared_kernel.domain.error import Error
+from domus_ledger_api.shared_kernel.domain.error import Error
 
 T = TypeVar("T")
 

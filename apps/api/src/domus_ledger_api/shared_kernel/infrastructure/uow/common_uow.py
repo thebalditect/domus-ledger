@@ -1,7 +1,7 @@
 from __future__ import annotations
 from types import TracebackType
 from typing import Self
-from api.src.domus_ledger_api.shared_kernel.application.uow.abstract_uow import (
+from domus_ledger_api.shared_kernel.application.uow.abstract_uow import (
     AbstractUnitOfWork,
 )
 from sqlalchemy.ext.asyncio import async_sessionmaker, AsyncSession

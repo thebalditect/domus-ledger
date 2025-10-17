@@ -1,14 +1,14 @@
 from typing import List
-from api.src.domus_ledger_api.modules.ledger.household.domain.entities.errors import (
+from domus_ledger_api.modules.ledger.household.domain.entities.errors import (
     HouseholdErrors,
 )
-from api.src.domus_ledger_api.modules.ledger.household.domain.entities.household import (
+from domus_ledger_api.modules.ledger.household.domain.entities.household import (
     Household,
 )
-from api.src.domus_ledger_api.modules.ledger.household.domain.entities.member import (
+from domus_ledger_api.modules.ledger.household.domain.entities.member import (
     Member,
 )
-from api.tests.unit_tests.modules.ledger.household.fixtures.household_fixtures import (
+from tests.unit_tests.modules.ledger.household.fixtures.household_fixtures import (
     HouseholdData,
 )
 

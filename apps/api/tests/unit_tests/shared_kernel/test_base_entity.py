@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from api.src.domus_ledger_api.shared_kernel.domain.base_entity import BaseEntity
+from domus_ledger_api.shared_kernel.domain.base_entity import BaseEntity
 
 
 @dataclass

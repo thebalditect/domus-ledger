@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import List
 import pytest
 
-from api.src.domus_ledger_api.modules.ledger.household.domain.entities.household import (
+from domus_ledger_api.modules.ledger.household.domain.entities.household import (
     Household,
 )
 

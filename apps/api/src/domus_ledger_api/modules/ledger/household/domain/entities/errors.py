@@ -1,5 +1,5 @@
-from api.src.domus_ledger_api.shared_kernel.domain.error import Error
-from api.src.domus_ledger_api.shared_kernel.domain.error_type import ErrorType
+from domus_ledger_api.shared_kernel.domain.error import Error
+from domus_ledger_api.shared_kernel.domain.error_type import ErrorType
 
 
 class HouseholdErrors:
